@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-baseColor;
+  }
+  input {
+    @apply bg-transparent;
+  }
+}
+
+@layer components {
+  .btn-auth {
+    @apply bg-baseColor p-4 rounded-md;
+  }
+  .input {
+    @apply bg-transparent text-fontBaseColor border border-fontBaseColor placeholder-fontBaseColor p-4 rounded-md focus:outline-none;
+  }
+  .btn {
+    @apply px-6 py-2 rounded-full text-baseColor;
+  }
+}
+
+/* global.css or tailwind.css */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 9999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: #f3f4f6;
+}
