@@ -16,11 +16,10 @@ function ProfileHeader({
   };
 
   const avatarSrc = profileImage
-  ? profileImage.startsWith("http")
-    ? profileImage
-    : `http://localhost:5000/images/${profileImage}`
-  : defaultAvatar;
-
+    ? profileImage.startsWith("http")
+      ? profileImage
+      : `http://localhost:5000/images/${profileImage}`
+    : defaultAvatar;
 
   return (
     <div

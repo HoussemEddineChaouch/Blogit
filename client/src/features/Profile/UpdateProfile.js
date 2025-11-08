@@ -1,3 +1,4 @@
+import defaultAvatar from "../../assets/images/team-profile-placeholder.jpg";
 import blogTexture from "../../assets/images/cover.jpg";
 import CardProfile from "../../components/shared/CardProfile";
 import rocketImage from "../../assets/images/rocketPng.png";
@@ -26,27 +27,24 @@ function UpdateProfile({
       formData.append("newPassword", values.newPassword);
       formData.append("countryCode", values.countryCode);
       formData.append("avatarUrl", values.avatarUrl);
-
       onSubmit(formData);
     },
   });
 
-  const defaultAvatar =
-    "https://static.wikia.nocookie.net/jamescameronsavatar/images/d/dd/Human_Sully.png/revision/latest/scale-to-width/360?cb=202105280338060";
-
-  const [preview, setPreview] = useState(
-    initialValues.avatarUrl
-      ? `http://localhost:5000/images/${initialValues.avatarUrl}`
-      : defaultAvatar
-  );
+  const [preview, setPreview] = useState(defaultAvatar);
 
   useEffect(() => {
-    setPreview(
-      initialValues.avatarUrl
-        ? `http://localhost:5000/images/${initialValues.avatarUrl}`
-        : defaultAvatar
-    );
+    if (initialValues.avatarUrl) {
+      if (initialValues.avatarUrl.startsWith("http")) {
+        setPreview(initialValues.avatarUrl);
+      } else {
+        setPreview(`http://localhost:5000/images/${initialValues.avatarUrl}`);
+      }
+    } else {
+      setPreview(defaultAvatar);
+    }
   }, [initialValues.avatarUrl]);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
