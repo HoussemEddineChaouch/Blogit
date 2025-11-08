@@ -115,7 +115,7 @@ function Profilepage() {
       <div className="flex items-center gap-2 my-4">
         {cardData.map(({ id, title, subtitle, cardIcon }, index) => (
           <Card
-            key={id}
+            key={`card-${id}`}
             Icon={cardIcon}
             title={`${profile.listCount[index]} ${title}`}
             subtitle={subtitle}
@@ -134,7 +134,7 @@ function Profilepage() {
           starCount,
         }) => (
           <Blogpost
-            key={_id}
+            key={`blog-${_id}`}
             blogId={_id}
             title={title}
             content={content}

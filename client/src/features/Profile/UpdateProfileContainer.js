@@ -56,11 +56,14 @@ function UpdateProfileContainer() {
   useEffect(() => {
     if (successMsg) {
       showToast("success", successMsg);
-      navigate("/auth");
     }
     if (errorMsg) showToast("error", errorMsg);
     dispatch(clearMessages());
   }, [successMsg, errorMsg, dispatch, navigate]);
+
+  useEffect(() => {
+    navigate("/auth");
+  }, [successMsg, navigate]);
 
   return (
     <UpdateProfile

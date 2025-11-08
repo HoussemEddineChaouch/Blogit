@@ -27,7 +27,7 @@ export const signInUser = createAsyncThunk(
   "auth/sign-in",
   async (data, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}signin`, data);
+      const response = await axios.get(`${API_URL}signin`, data);
       return response.data;
     } catch (error) {
       if (

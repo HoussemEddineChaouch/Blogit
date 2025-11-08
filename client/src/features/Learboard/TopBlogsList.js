@@ -30,7 +30,7 @@ function TopBlogsList({ list, isLoading }) {
           <tr className="bg-fontBaseColor text-baseColor">
             {theadList.map(({ id, headName }) => {
               return (
-                <th className="py-4" key={id}>
+                <th className="py-4" key={`head-${id}`}>
                   {headName}
                 </th>
               );
@@ -46,7 +46,7 @@ function TopBlogsList({ list, isLoading }) {
             } = item;
             return (
               <tr
-                key={index}
+                key={`tr-${index}`}
                 className={`${
                   index % 2 === 0
                     ? "bg-secondaryColor text-fontBaseColor"

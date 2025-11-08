@@ -2,14 +2,8 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Authpage from "./features/Authentication/Authpage";
 
-import ResetPassword from "./features/Otp/Reset Password/ResetPassword";
-import Header from "./components/shared/Header";
-import HeaderAuth from "./components/shared/HeaderAuth";
 import Profilepage from "./features/Profile/Profilepage";
-import CreateBlog from "./features/Blog/CreateBlog";
-import UpdateProfile from "./features/Profile/UpdateProfile";
 import UpdateProfileContainer from "./features/Profile/UpdateProfileContainer";
-import Popup from "./components/shared/Popup";
 import LeaderboardLayout from "./layout/LeaderboardLayout";
 import TopWritersContainer from "./features/Learboard/TopWritersContainer";
 import TopBlogsConatiner from "./features/Learboard/TopBlogsConatiner";

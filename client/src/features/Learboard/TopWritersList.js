@@ -10,11 +10,11 @@ const theadList = [
   { id: 3, headName: "Fullname" },
   { id: 4, headName: "Country" },
   { id: 5, headName: "Post Title" },
-  { id: 5, headName: "Post Category" },
-  { id: 6, headName: "Fires" },
-  { id: 7, headName: "Rockets" },
-  { id: 8, headName: "Stars" },
-  { id: 9, headName: "Total" },
+  { id: 6, headName: "Post Category" },
+  { id: 7, headName: "Fires" },
+  { id: 8, headName: "Rockets" },
+  { id: 9, headName: "Stars" },
+  { id: 10, headName: "Total" },
 ];
 
 function TopWritersList({ list, isLoading }) {
@@ -35,7 +35,7 @@ function TopWritersList({ list, isLoading }) {
           <tr className="bg-fontBaseColor text-baseColor">
             {theadList.map(({ id, headName }) => {
               return (
-                <th className="py-4" key={id}>
+                <th className="py-4" key={`head-${id}`}>
                   {headName}
                 </th>
               );
@@ -60,7 +60,7 @@ function TopWritersList({ list, isLoading }) {
                   <td className="text-center py-4">{rowIndex}</td>
                   <td className="py-4 mx-auto">
                     <img
-                      className="mx-auto w-6 rounded-full border-2 border-transparent outline outline-fontBaseColor"
+                      className="mx-auto w-6 h-6 rounded-full border-2 border-transparent outline outline-fontBaseColor"
                       src={
                         userDetails?.avatarUrl
                           ? userDetails?.avatarUrl.startsWith("http")

@@ -221,7 +221,6 @@ async function toggleLike(req, res) {
 
 async function topBlogs(req, res) {
   try {
-    s;
     const topUsers = await Blog.aggregate([
       {
         $group: {
@@ -288,8 +287,7 @@ async function topBlogs(req, res) {
 
     res.json(topUsers);
   } catch (error) {
-    console.error(error);
-    res
+    return res
       .status(500)
       .json({ message: "An error occurred while fetching top users." });
   }
@@ -353,7 +351,7 @@ async function topBloggers(req, res) {
 
     res.json(TopBlogsWriter);
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
     res
       .status(500)
       .json({ message: "An error occurred while fetching top users." });

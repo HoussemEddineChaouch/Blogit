@@ -17,7 +17,7 @@ function Header() {
       name: "Home",
     },
     {
-      id: 1,
+      id: 3,
       to: "blogs/leaderboard",
       name: "Leaderboard",
     },

@@ -43,7 +43,7 @@ Desktop.ini
 
 # Images and uploads (optional if stored locally)
 /server/images
-/server/images/
+/server/images/ 
 /client/public/uploads
 
 # Others
