@@ -72,8 +72,6 @@ function Profilepage() {
     dispatch(clearMessages());
   }, [successMsg, errorMsg, dispatch]);
 
-  if (isLoading || !profile.user) return <Spinner />;
-
   const handleDeleteRequest = (blogId) => {
     setSelectedBlogId(blogId);
     setOpen(true);
@@ -91,6 +89,8 @@ function Profilepage() {
     setOpen(false);
     setSelectedBlogId(null);
   };
+
+  if (isLoading || !profile.user) return <Spinner />;
 
   return (
     <div>

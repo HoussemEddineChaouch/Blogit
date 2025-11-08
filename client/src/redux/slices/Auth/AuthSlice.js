@@ -7,6 +7,7 @@ import {
   signUpUser,
   verifyMe,
   verifyOtp,
+  logoutUser,
 } from "./AuthThunks";
 import { deleteBlog, toggleLike } from "../Blogs/BlogThunks";
 
@@ -135,12 +136,22 @@ const authSlice = createSlice({
         state.isLoadingAuth = false;
         state.isAuth = false;
         state.user = null;
+      })
+      .addCase(logoutUser.pending, (state, { payload }) => {
+        state.loading = true;
+        state.errorMsg = null;
+        state.successMsg = null;
+      })
+      .addCase(logoutUser.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.successMsg = payload.message;
+      })
+      .addCase(logoutUser.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.errorMsg = payload;
       });
   },
 });
-
-
-
 
 export const { clearMessages, logout } = authSlice.actions;
 export default authSlice.reducer;

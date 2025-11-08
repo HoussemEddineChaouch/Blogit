@@ -115,4 +115,22 @@ const googleCallback = (req, res) => {
   res.redirect("http://localhost:3000");
 };
 
-module.exports = { signUpNewUser, signIn, verifyAuth, googleCallback };
+/**----------------------------- 
+ @desc        user logout and clear token in the cookies
+ @router      /blogit/apiv1/auth/logout
+ @method      POST
+ @access      public
+------------------------------*/
+
+const logout = (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+    });
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error!" });
+  }
+};
+
+module.exports = { signUpNewUser, signIn, verifyAuth, googleCallback, logout };

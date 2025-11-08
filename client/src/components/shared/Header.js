@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import blogitLogo from "../../assets/logoBlogit.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../redux/slices/Auth/AuthThunks";
+import { useEffect } from "react";
+import { clearMessages, logout } from "../../redux/slices/Auth/AuthSlice";
+import { showToast } from "../../utils/toastHandler";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { successMsg, errorMsg } = useSelector((state) => state.auth);
   const links = [
     {
       id: 1,
@@ -22,6 +28,18 @@ function Header() {
       name: "Leaderboard",
     },
   ];
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
+  useEffect(() => {
+    if (successMsg) {
+      dispatch(logout());
+      navigate("/auth", { replace: true });
+      dispatch(clearMessages());
+    }
+  }, [successMsg, errorMsg, dispatch, navigate]);
 
   return (
     <header
@@ -42,7 +60,9 @@ function Header() {
       </ul>
 
       {/* Logout Button */}
-      <h1 className="hidden md:block cursor-pointer">Logout</h1>
+      <button onClick={handleLogout} className="hidden md:block cursor-pointer">
+        Logout
+      </button>
 
       {/* Mobile Hamburger */}
       <button

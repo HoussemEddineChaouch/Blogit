@@ -7,6 +7,7 @@ const {
   signIn,
   verifyAuth,
   googleCallback,
+  logout,
 } = require("../controllers/authController");
 const { verifyToken } = require("../middlewares/verifyToken");
 
@@ -24,5 +25,7 @@ router.get(
   passport.authenticate("google", { session: false, failureRedirect: "/" }),
   googleCallback
 );
+
+router.post("/logout", verifyToken, logout);
 
 module.exports = router;

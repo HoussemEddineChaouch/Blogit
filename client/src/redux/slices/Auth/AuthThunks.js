@@ -136,3 +136,22 @@ export const verifyMe = createAsyncThunk(
     }
   }
 );
+
+export const logoutUser = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/blogit/apiv1/auth/logout"
+      );
+      return response.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error?.response?.data?.error ||
+        "An error occurred. Please try again.";
+
+      return rejectWithValue(message);
+    }
+  }
+);
