@@ -33,6 +33,7 @@ const userSlice = createSlice({
       })
       .addCase(deleteAccount.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.isAuthentificated = false;
       })
       .addCase(deleteAccount.fulfilled, (state, { payload }) => {
         state.isLoading = false;

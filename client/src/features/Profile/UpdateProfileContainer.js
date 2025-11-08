@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showToast } from "../../utils/toastHandler";
 import { clearMessages } from "../../redux/slices/User/userSlice";
+import { logout } from "../../redux/slices/Auth/AuthSlice";
 
 function UpdateProfileContainer() {
   const navigate = useNavigate();
@@ -55,15 +56,15 @@ function UpdateProfileContainer() {
 
   useEffect(() => {
     if (successMsg) {
-      showToast("success", successMsg);
+      if (successMsg === "Account deleted successfully") {
+        showToast("success", successMsg);
+        dispatch(logout());
+        navigate("/auth", { replace: true });
+      }
     }
     if (errorMsg) showToast("error", errorMsg);
     dispatch(clearMessages());
   }, [successMsg, errorMsg, dispatch, navigate]);
-
-  useEffect(() => {
-    navigate("/auth");
-  }, [successMsg, navigate]);
 
   return (
     <UpdateProfile
