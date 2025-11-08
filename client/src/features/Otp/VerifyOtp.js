@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { verifyOtp } from "../../redux/slices/Auth/AuthThunks";
 import { showToast } from "../../utils/toastHandler";
 import { clearMessages } from "../../redux/slices/Auth/AuthSlice";
+import { GoUnverified } from "react-icons/go";
 
 const inputStyle = {
   width: "4rem",
@@ -32,6 +33,9 @@ function VerifyOtp() {
   );
 
   useEffect(() => {
+    if (successMsg && otpLink) {
+      navigate("/auth/reset-password?token=" + otpLink);
+    }
     if (successMsg) {
       showToast("success", successMsg);
       dispatch(clearMessages());
@@ -40,20 +44,17 @@ function VerifyOtp() {
       showToast("error", errorMsg);
       dispatch(clearMessages());
     }
-  }, [successMsg, errorMsg, dispatch]);
+  }, [successMsg, errorMsg, otpLink, dispatch, navigate]);
 
   const handelSubmit = () => {
-    dispatch(verifyOtp({ plainOtp }))
-      .unwrap()
-      .then(() => {
-        navigate("/auth/reset-password?token=" + otpLink);
-      })
-      .catch((err) => showToast("error", err.message));
+    dispatch(verifyOtp({ plainOtp }));
   };
 
   return (
     <div className="space-y-4 text-center text-fontBaseColor">
-      <div className="w-10 h-10 mx-auto bg-fontBaseColor rounded-lg"></div>
+      <div className="w-10 h-10 mx-auto text-[20px] text-baseColor flex items-center justify-center bg-fontBaseColor rounded-lg">
+        <GoUnverified />
+      </div>
       <h1 className="font-bold">OTP Verification</h1>
       <p>
         Welcome to our OTP verification. Please enter your email in the form

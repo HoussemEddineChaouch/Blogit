@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import { FiUnlock } from "react-icons/fi";
 
 const listInput = [
   {
@@ -35,7 +36,9 @@ function ResetPassword({
       onSubmit={formik.handleSubmit}
       className="space-y-4 text-center text-fontBaseColor"
     >
-      <div className="w-10 h-10 mx-auto bg-fontBaseColor rounded-lg"></div>
+      <div className="w-10 h-10 mx-auto text-baseColor text-[20px] flex items-center justify-center bg-fontBaseColor rounded-lg">
+        <FiUnlock />
+      </div>
       <h1 className="font-bold">Reset Password</h1>
       <p>
         Welcome to our password reset portal. Kindly enter your email below to

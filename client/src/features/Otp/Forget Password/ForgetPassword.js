@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React from "react";
+import { TbLockPassword } from "react-icons/tb";
 
 function ForgetPassword({
   initialValues,
@@ -20,7 +20,9 @@ function ForgetPassword({
       onSubmit={formik.handleSubmit}
       className="space-y-4 text-center text-fontBaseColor"
     >
-      <div className="w-10 h-10 mx-auto bg-fontBaseColor rounded-lg"></div>
+      <div className="w-10 h-10 mx-auto text-baseColor text-[20px] flex items-center justify-center bg-fontBaseColor rounded-lg">
+        <TbLockPassword />
+      </div>
       <h1 className="font-bold">Forget Password</h1>
       <p>
         lcome to our password reset tool. Please provide your email in the form
